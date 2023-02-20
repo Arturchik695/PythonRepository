@@ -888,7 +888,6 @@
 import math as m
 import time
 
-
 # from math import pi
 # r = int(input("Введите радиус окружности: "))
 # s = round(2 * pi * r, 2)
@@ -1056,6 +1055,370 @@ import time
 # display_info(23, "Ira")
 # display_info(age=23, name="Ira")
 # display_info("Igor", age=23, name="Ira")
+
+
+# def summa(a, b, c):
+#     sm = a + b + c
+#     avg = sm / 3
+#     return avg
+#
+#
+# q = summa(1, 2, 3)
+# print(q)
+
+
+# def digits_sum(n, even=True):
+#     s = 0
+#     while n > 0:
+#         cur_digit = n % 10
+#         if even and cur_digit % 2 == 0:
+#             s += cur_digit
+#         elif not even and cur_digit % 2:
+#             s += cur_digit
+#         n //= 10
+#     return s
+#
+#
+# print("Сумма четных цифр: ")
+# print(digits_sum(9874023))
+# print(digits_sum(38271))
+# print(digits_sum(123456789))
+# print("Сумма нечетных цифр: ")
+# print(digits_sum(9874023, even=False))
+# print(digits_sum(38271, even=False))
+# print(digits_sum(123456789, even=False))
+
+
+# def add_number(n):
+#     print("n:", n, "=", id(n))
+#     n += 1
+#     print("n:", n, "=", id(n))
+#     return n
+#
+#
+# x = 1
+# print("x:", x, "=", id(x))
+# y = add_number(x)
+# print("x:", x, "=", id(x))
+# print("y:", y, "=", id(y))
+
+
+# def add_number(n):
+#     print("n:", n, "=", id(n))
+#     n = n + [4]  # n += [4]
+#     print("n:", n, "=", id(n))
+#
+#
+# x = [1, 2, 3]
+# print("x:", x, "=", id(x))
+# add_number(x)
+# print("x:", x, "=", id(x))
+
+
+# Кортеж (tuple)
+
+# a = 1,
+# print(a)
+# print(type(a))
+# b = tuple((1, 2, 3, 4, 5))
+# print(b)
+# print(type(b))
+
+# tpl = (1, 2, 3, 4, 5, 6, 7)
+# print(tpl)
+# print(tpl[2])
+# # tpl[2] = 10
+# print(tpl[1:3])
+
+# s = tuple(input("->") for i in range(3))
+
+# from random import randint
+# s = tuple(randint(1, 30) for i in range(10))
+# print(s)
+
+# s = tuple(2 ** i for i in range(1, 12))
+# print(s)
+
+# t1 = tuple("hello")
+# t2 = tuple('world')
+# t3 = t1 + t2
+# print(t3)
+# # print(t3 * 2)
+# print(len(t3))
+# print(t3.count('l'))  # ищет количество букв l
+# print(t3.index('l'))  # ищет первое вхождение l
+
+# if 'a' in t3:
+#     print(t3.index('a'))
+# else:
+#     print("Такого символа нет")
+
+
+# t1 = tuple("hello")
+# t2 = tuple('world')
+# t3 = t1 + t2
+# print(t3)
+# for i in t3:
+#     print(i, end="")
+
+
+# def slicer(tpl, el):
+#     if el in tpl:
+#         if tpl.count(el) > 1:
+#             first = tpl.index(el)
+#             second = tpl.index(el, first + 1)
+#             return tpl[first:second + 1]
+#         else:
+#             return tpl[tpl.index(el):]
+#     else:
+#         return ()
+#
+#
+# print(slicer((1, 2, 3), 8))
+# print(slicer((1, 8, 3, 4, 8, 8, 9, 2), 8))
+# print(slicer((1, 2, 8, 5, 1, 2, 9), 8))
+
+
+# from random import randint
+#
+#
+# def tpl(a, b):
+#     return tuple(randint(a, b) for i in range(10))
+#
+#
+# tpl1 = tpl(0, 5)
+# tpl2 = tpl(-5, 0)
+# print(tpl1)
+# print(tpl2)
+# tpl3 = tpl1 + tpl2
+# print(tpl3)
+# print(tpl3.count(0))
+
+
+# t = (10, 11, [1, 2, 3], [4, 5, 6], ['hello', 'world'])
+# print(t, id(t))
+# t[4][0] = "new"
+# print(t, id(t))
+# t[4].append('hi')
+# print(t, id(t))
+
+
+# t = (1, 2, 3)
+# # x = t[0]
+# # y = t[1]
+# # z = t[2]
+# x, y, z = t  # распаковка кортежа
+# print(x, y, z)
+
+
+# def get_user():
+#     name = "Tom"
+#     age = 22
+#     is_married = False
+#     return name, age, is_married
+#
+#
+# # user = get_user()
+# # print(user)
+# # print(user[0])
+# # print(user[1])
+# # print(user[2])
+# # first_name, year, married = user
+# first_name, year, married = get_user()
+# print(first_name, year, married)
+
+
+# lst = [1, 2, 3, 4, 5]
+# print(type(lst))
+# print(lst)
+# tpl = tuple(lst)
+# print(type(tpl))
+# print(tpl)
+# lst = list(tpl)
+# print(type(lst))
+# print(lst)
+
+
+# countries = (
+#     ("Германия", 80.2, (("Берлин", 3.236), ("Гамбург", 1.718))),
+#     ("Франция", 66, (("Париж", 2.2), ("Марсель", 1.6))),
+# )
+#
+# print(countries)
+# for country in countries:
+#     country_name, country_population, cities = country
+#     print("\nСтрана:", country_name, "\nНаселение:", country_population)
+#     for city in cities:
+#         city_name, city_population = city
+#         print("\tГород:", city_name, " (Население: ", city_population, ")", sep="")
+
+
+# Множество (set)
+
+# s = {"banana", "apple", "orange", "banana", "apple"}
+# print(s)
+# print(type(s))
+# print(len(s))
+# lst = ["banana", "apple", "orange", "banana", "apple"]
+# a = set(lst)
+# a = set("Hello")
+# print(type(a))
+# print(a)
+
+
+# def to_set(a):
+#     x = set(a)
+#     n = len(x)
+#     return x, n
+#
+#
+# print(to_set('я обычная строка'))
+# print(to_set([4, 5, 4, 6, 2, 9, 11, 3, 4, 2]))
+
+
+# t = {'red', 'green', 'blue'}
+# print("green1" not in t)
+# for i in t:
+#     print(i)
+
+
+# lst = {'ab_1', 'ac_2', 'bc_1', 'bc_2'}
+# a = {i for i in lst if 'a' not in i}
+# a = {'A' + i[1:] if i[0] == 'a' else 'B' + i[1:] for i in lst}
+# a = {'A' + i[1:] if i[0] == 'a' else 'B' + i[1:] for i in lst if i[1] == 'c'}
+# print(a)
+
+# Альтернативная запись:
+# for i in lst:
+#     if i[1] == 'c':
+#         if i[0] == 'a':
+#             print('A' + i[1:])
+#         else:
+#             print('B' + i[1:])
+
+
+# users = {"Tom", "Alice", "Bob"}
+# users.add("Ann")
+# print(users)
+# user = "Tom"
+# if user in users:
+#     users.remove(user)
+# print(users)
+# users.discard("Rob")
+# print(users)
+# users.pop()
+# print(users)
+# users.clear()
+# print(users)
+
+
+# a = {0, 1, 2, 3}
+# b = {4, 3, 2, 1}
+# c = a.union(b)
+# c = a | b
+# c = a & b
+# c = a ^ b
+# c = a |= b
+# c = a &= b
+# print(c)
+# print(a)
+
+
+# s1 = {1, 2}
+# s2 = {3}
+# s3 = {4, 5}
+# s4 = {3, 2, 6}
+# s5 = {6}
+# s6 = {7, 8}
+# s7 = {9, 8}
+#
+# s = s1.union(s2, s3, s4, s5, s6, s7)
+# print(s)
+# print(len(s))
+# print(min(s))
+# print(max(s))
+
+
+# a = set(input("Введите первую строчку: "))
+# b = set(input("Введите вторую строчку: "))
+# c = a & b
+# print(c)
+
+
+# drawing = {'Марина', 'Женя', 'Света'}
+# music = {'Костя', 'Женя', 'Илья'}
+#
+# one = drawing ^ music
+# print(one)
+#
+# both = drawing & music
+# print(both)
+#
+# drawing = drawing - both
+# print(drawing)
+
+
+# frozenset (замороженное множество)
+# s = frozenset([1, 2, 3, 4, 5])
+# print(s)
+#
+# a = frozenset("hello")
+# print(a)
+
+
+# Словарь (dict)
+
+# s = [1, 2, 3]
+# d = {"one": 1, "two": 2, "three": 3}
+# print(s[1])
+# print(d["two"])
+
+
+# d = {"one": 1, "two": 2}
+# print(d)
+# print(type(d))
+#
+# d1 = dict(one=1, two=2)
+# print(d1)
+
+
+# d = {"one": 1, "two": 2, "three": 3}
+# print(list(d))
+# lst = ["one", "two", "three"]
+# # print(dict(lst))
+#
+# a = [
+#     ["one", 1],
+#     ["two", 2],
+#     ["three", 3]
+# ]
+# print(dict(a))
+
+
+# d = {"one": 45, 0: "text", (1, 2.3): 'Кортеж', 43: [2, 3, 6, 7], 0: "text111", 1: "text"}
+# print(d)  # значения словаря ТОЛЬКО из неизменяемых типов данных
+# # в ключах с одинаковыми названиями значения перезаписываются
+# # ключи должны быть уникальными!
+# print(d[0][1])  # обращение к ключу
+
+
+# d = {i: i ** 2 for i in range(2, 7)}
+# d = {i: input("->") for i in range(2, 7)}
+# from random import randint
+# d = {str(i) + "-й элемент": randint(1, 100) for i in range(1, 11)}
+# print(d)
+
+
+# d = {"one": 1, "two": 2, "three": 3}
+# print(d)
+# d['two'] = 200
+# d['one'] += 100
+# print(d)
+
+# for key in d:
+#     print(key, ":", d[key])
+
+
 
 
 
