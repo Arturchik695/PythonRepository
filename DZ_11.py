@@ -30,7 +30,3 @@ workers[key][salary] = new_data
 print(workers[key])
 
 
-
-
-
-
