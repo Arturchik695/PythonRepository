@@ -888,7 +888,6 @@
 import math as m
 import time
 
-
 # from math import pi
 # r = int(input("Введите радиус окружности: "))
 # s = round(2 * pi * r, 2)
@@ -2092,6 +2091,329 @@ import time
 # list_d.sort(key=func)
 # print(list_d)
 # print(dict(list_d))
+
+
+# players = [
+#     {'name': 'Антон', 'last name': 'Бирюков', 'rating': 9},
+#     {'name': 'Алексей', 'last name': 'Бодня', 'rating': 10},
+#     {'name': 'Федор', 'last name': 'Сидоров', 'rating': 4},
+#     {'name': 'Михаил', 'last name': 'Семенов', 'rating': 6}
+# ]
+#
+# res = sorted(players, key=lambda item: item['last name'])
+# print(res)
+# res = sorted(players, key=lambda item: item['rating'])
+# print(res)
+# res = sorted(players, key=lambda item: item['rating'], reverse=True)
+# print(res)
+
+
+# a = [lambda x, y: x + y, lambda x, y: x - y, lambda x, y: x * y, lambda x, y: x / y]
+# print(a[2](12, 3))
+
+# a = {'one': lambda x: x - 1, 'two': lambda x: x * (-1), 'three': lambda x: x ** 3 }
+#
+# b = [-3, 10, 0, 4]
+#
+# for i in b:
+#     if i < 0:
+#         print(a['two'](i))
+#     elif i > 0:
+#         print(a['one'](i))
+#     else:
+#         print(a['three'](i))
+
+# d = {
+#     1: lambda: print("Понедельник"),
+#     2: lambda: print("Вторник"),
+#     3: lambda: print("Среда")
+# }
+#
+# d[2]()
+
+
+# print((lambda a, b: a if a > b else b)(5, 13))
+
+# print((lambda a, b, c: a if a < b and a < c else b if b < a and b < c else c)(15, 16, 13))
+
+# def mult(t):
+#     return t * 2
+#
+#
+# lst = [2, 8, 12, -5, -10]
+#
+# a = list(map(mult, lst))
+# print(a)
+#
+# a1 = list(map(lambda t: t * 2, lst))
+# print(a1)
+
+
+# t = (2.88, -1.75, 100.55)
+#
+# t2 = tuple(map(lambda x: int(x), t))
+# print(t2)
+#
+# t3 = tuple(map(int, t))
+# print(t3)
+
+
+# st = ['a', 'b', 'c', 'd', 'e']
+# num = [1, 2, 3, 4, 5]
+# print(list(map(lambda x, y: (x, y), st, num)))
+
+# l1 = [1, 2, 3]
+# l2 = [4, 5, 6]
+# print(list(map(lambda x, y: x + y, l1, l2)))
+
+# t = ('abcd', 'abc', 'cdrfg', 'def', 'ghi')
+# t2 = tuple(filter(lambda s: len(s) == 3, t))
+# print(t2)
+
+# b = [66, 90, 68, 59, 76, 60, 88, 74, 81, 65]
+# res = list(filter(lambda s: s > 75, b))
+# print(res)
+
+
+# from random import  randint
+#
+# lst = [randint(1, 40) for i in range(10)]
+# print(lst)
+# print("[10; 20] = ", list(filter(lambda s: 10 <= s <= 20, lst)))
+
+
+# print(list(map(lambda x: x ** 2, filter(lambda x: x % 2, range(10)))))
+# сначала отфильтровался список, а потом выполнились действия над ним
+
+
+# Декораторы
+
+# def hello():
+#     return 'Hello, I am func "hello"'
+#
+#
+# def super_func(func):
+#     print('Hello, I am func "hello"')
+#     print(func())
+#
+#
+# super_func(hello)
+
+
+# def hello():
+#     return 'Hello, I am func "hello"'
+#
+#
+# test = hello()
+# # test = hello
+# print(test())
+
+
+# def my_decorator(func):  # декорирующая функция
+#     def func_wrapper():
+#         print('*' * 50)
+#         func()
+#         print('*' * 50)
+#
+#     return func_wrapper
+#
+#
+# @my_decorator  # декоратор
+# def func_test():  # декорируемая функция
+#     print("Тело функции 'func_test'")
+#
+#
+# @my_decorator
+# def hello():
+#     print('Hello, I am func "hello"')
+#
+#
+# func_test()
+# hello()
+# # test = my_decorator(func_test)
+# # test()
+
+
+# def bold(fn):
+#     def wrap():
+#         return "<b>" + fn() + "</b>"
+#
+#     return wrap
+#
+#
+# def italic(fn):
+#     def wrap():
+#         return "<i>" + fn() + "</i>"
+#
+#     return wrap
+#
+#
+# @italic
+# @bold
+# def hello():
+#     return 'text'
+#
+#
+# print(hello())
+
+
+# def cnt(fn):
+#     count = 0
+#
+#     def wrap():
+#         nonlocal count
+#         count += 1
+#         fn()
+#         print("Вызов функции:", count)
+#
+#     return wrap
+#
+#
+# @cnt
+# def hello():
+#     print('Hello')
+#
+#
+# hello()
+# hello()
+# hello()
+
+
+# def args_decorator(fn):
+#     def wrap(arg1, arg2):
+#         print(arg1, arg2)
+#         fn(arg1, arg2)
+#
+#     return wrap
+#
+#
+# @args_decorator
+# def print_full_name(name, surname):
+#     print("Меня зовут", name, surname)
+#
+#
+# print_full_name("Ирина", "Леонова")
+
+
+# def args_decorator(fn):
+#     def wrap(*args, **kwargs):
+#         print('args:', args)
+#         print('kwargs:', kwargs)
+#         fn(*args, **kwargs)
+#
+#     return wrap
+#
+#
+# @args_decorator
+# def print_full_name(a, b, c, study="Python"):
+#     print(a, b, c, "изучают", study, "\n")
+#
+#
+# print_full_name("Ирина", "Борис", "Светлана", study="JS")
+# print_full_name("Владимир", "Екатерина", "Виктор")
+
+
+# def decor(args1, args2):
+#     def args_dec(fn):
+#         def wrap(x, y):
+#             print(args1, x, args2, y, "=", end=" ")
+#             fn(x, y)
+#
+#         return wrap
+#     return args_dec
+#
+#
+# @decor("Сумма:", "+")
+# def summa(a, b):
+#     print(a + b)
+#
+#
+# @decor("Разность:", "-")
+# def sub(a, b):
+#     print(a - b)
+#
+#
+# summa(5, 2)
+# sub(5, 2)
+
+
+# def change_to_str(s, c_old, c_new):
+#     s2 = ""
+#     i = 0
+#     while i < len(s):
+#         if s[i] == c_old:
+#             s2 += c_new
+#         else:
+#             s2 += s[i]
+#         i += 1
+#     return s2
+#
+#
+# str1 = "Я изучаю Nython. Мне нравится Nython. Nython очень интересный"
+# str2 = change_to_str(str1, "N", "P")
+# print("str1 = ", str1)
+# print("str2 = ", str2)
+
+# Префиксы
+
+# name = "Дмитрий"
+# age = 25
+#
+# print("Меня зовут ", name, ". Мне ", age, " лет", sep="")
+# print("Меня зовут " + name + ". Мне " + str(age) + " лет")
+# print(f"Меня зовут {name}. Мне {age} лет")
+
+
+# x = 10
+# y = 5
+# print(f"{x=}, {y=}")
+# print(f"{x} x {y} / 2 = {x * y / 2}")
+
+
+# def square(n):
+#     """Принимает число n, возвращает квадрат числа n"""
+#     return n ** 2
+#
+#
+# print(square(5))
+
+
+# Задача №2
+# def change_to_str(s, c_old, c_new):
+#     s2 = ""
+#     i = 0
+#     while i < len(s):
+#         if s[i] == c_old and i % 2 == 0:
+#             s2 += c_new
+#         else:
+#             s2 += s[i]
+#         i += 1
+#     return s2
+#
+#
+# str1 = "Я изучаю Nython. Мне нравится Nython. Nython очень интересный"
+# str2 = change_to_str(str1, "N", "P")
+# print("str1 = ", str1)
+# print("str2 = ", str2)
+
+
+# # Задача №3
+# s1 = "0123456789"
+# s2 = s1[:4] + s1[5:]
+# print("str1 =", s1)
+# print("str2 =", s2)
+
+
+# Задача №4
+# s1 = "Delete elements"
+# delete = "e"
+# print("s1: " + s1)
+# s2 = ""
+# for i in s1:
+#     if i != delete:
+#         s2 += i
+# print("s2: " + s2)
+
 
 
 
