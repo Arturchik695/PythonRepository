@@ -2979,8 +2979,523 @@ from random import randint
 # f.close()
 
 
+# f = open('text.txt', 'r')
+# print(f.read(3))  # Hel
+# print(f.tell())  # 3  - возвращает текущую позицию условного курсора в файле
+# print(f.seek(1))  # 1  - перемещает условный курсор в заданную позицию
+# print(f.read())  # ello!
+# print(f.tell())
+# f.close()
 
 
+# f = open('text1.txt', 'r+')
+# print(f.write("I am learning Python"))
+# print(f.seek(3))
+# print(f.write("-new string-"))
+# print(f.tell())
+# f.close()
+
+# with open('text.txt', 'r+') as f:
+#     print(f.write('01234\n56789'))
+#
+#
+# with open('text.txt', 'r+') as f:
+#     for line in f:
+#         print(line[:3])
+
+
+# file_name = "res.txt"
+# lst = [4.5, 2.8, 3.9, 1.0, 0.3, 4.33, 7.777]
+# print(len(lst))
+# print(sum(lst))
+
+# def get_line(lt):
+#     lt = list(map(str, lt))
+#     print(lt)
+#     return " ".join(lt)
+#
+#
+# with open(file_name, 'w') as f:
+#     f.write(get_line(lst))
+#
+#
+# print('Done!')
+
+
+# with open('res.txt', 'r') as f:
+#     read_file = f.read().split(" ")
+#     print(read_file)
+#     len(read_file)
+#     print(sum(map(float, read_file)))
+
+# def longest_words(file):
+#     with open(file) as text:
+#         w = text.read().split()
+#         max_length = len(max(w, key=len))
+#         res = [word for word in w if len(word) == max_length]
+#         # print(w)
+#         # print(res)
+#         if len(res) == 1:
+#             return res[0]
+#         return res
+#
+#
+# print(longest_words('test.txt'))
+
+
+# text = "Строка №1\nСтрока №2\nСтрока №3\nСтрока №4\nСтрока №5\nСтрока №6\nСтрока №7\nСтрока №8\nСтрока №9\nСтрока №10\n"
+#
+# with open('one.txt', 'w') as f:
+#     f.write(text)
+
+# read_file = 'one.txt'
+# write_file = 'two.txt'
+# other_file = 'three.txt'
+# with open(read_file, 'r') as fr, open(write_file, 'r') as frr, open(other_file, 'w') as fw:
+#     # for line in fr:
+#     #     line = line.replace("Строка", "Линия - ")
+#     #     fw.write(line)
+#
+#     a = fr.readlines()
+#     b = frr.readlines()
+#     # print(a)
+#     # print(b)
+#     # c = a + b
+#     # print(c)
+#     # # for line in c:
+#     # #     fw.write(line)
+#     # fw.writelines(c)
+#
+#     for i, j in zip(a, b):
+#         c = i + j
+#         fw.write(c)
+
+
+# Модули OS и OS.PATH
+
+import os
+
+# import os.path
+
+# print("Текущая директория:", os.getcwd())  # возвращает путь к текущей директории
+# print(os.listdir())  # возвращает имена файлов и папок из текущей директории
+# print(os.listdir(".."))
+# os.mkdir("folder")  # создание папки
+# os.makedirs("nested1/nested2/nested3")  # создание папки и всех папок
+# os.rmdir("folder")  # удаление пустой директории
+# os.remove("xyz.txt")  # удаляет файл
+# os.rename('two.txt', 'new.txt')  # переименовывает файл или папка
+# os.rename('new.txt', 'directory/two.txt')  # перемещает по заданному путь (все имена в пути должны существовать)
+# os.rename('three.txt', 'directory/three.txt')
+# os.renames('text2.txt', 'test/text.txt')  # создает промежуточные директории
+
+
+# for root, dirs, files in os.walk("nested1", topdown=False):
+#     print("Root:", root)
+#     print("Subdirs:", dirs)
+#     print("Files:", files)
+
+# def remove_empty_dirs(root_tree):
+#     print(f"Удаление пустых директорий в ветви {root_tree}")
+#     print("-" * 50)
+#     for root, dirs, files in os.walk("nested1"):
+#         if not os.listdir(root):
+#             os.rmdir(root)
+#             print(f"Директория {root} удалена.")
+#     print("-" * 50)
+#
+#
+# remove_empty_dirs("nested1")
+
+# print(os.path.split(r"D:\Python215\215\nested1\nested2\nested3\text.txt"))  # разбивает путь на кортеж (head, tail),
+# # tail - последний компонент пути, head - остальная часть
+#
+# print(os.path.dirname(r"D:\Python215\215\nested1\nested2\nested3\text.txt"))   # путь до последнего компонента
+# print(os.path.basename(r"D:\Python215\215\nested1\nested2\nested3\text.txt"))  # последний компонент пути
+
+# print(os.path.join('215', r'D:\Python215', 'nested1', 'nested2', 'text.txt'))  # соединяет один или несколько
+# компонентов пути с учетом особенностей OS
+
+
+# dirs = [r'Work\F1', r'Work\F2\F21']
+# for d in dirs:
+#     os.makedirs(d)
+
+# files = {
+#     'Work': ['w.txt'],
+#     r'Work\F1': ['f11.txt', 'f12.txt', 'f13.txt'],
+#     r'Work\F2\F21': ['f211.txt', 'f212.txt']
+# }
+#
+# for d, f in files.items():
+#     for file in f:
+#         file_path = os.path.join(d, file)
+#         open(file_path, 'w').close()
+#
+#
+# files_width_text = [r'Work\w.txt', r'Work\F1\f12.txt', r'Work\F2\F21\f211.txt', r'Work\F2\F21\f212.txt']
+#
+# for file in files_width_text:
+#     with open(file, 'w') as f:
+#         f.write(f"Некоторый текст для документа: {file}")
+#
+#
+# def print_tree(root, topdown=True):
+#     print(f"Обход {root} {'сверху вниз' if topdown else 'снизу вверх'}")
+#     for root, dirs, fl in os.walk(root, topdown):
+#         print(root)
+#         print(dirs)
+#         print(fl)
+#     print('-' * 50)
+#
+#
+# print_tree("Work", False)
+# print_tree("Work")
+
+# print(os.path.exists(r"D:\Python215\215\nested1\nested2\nested3\text.txt"))  # возвращает True, если путь указывает
+# на существующий файл, False - на несуществующий файл
+# import time
+#
+# path = r'D:\Python215\215\venv\Scripts\python.exe'
+# print(os.path.getsize(path) // 1024, "KB")  # возвращает размер файла в байтах
+# print(os.path.getmtime(path))  # возвращает время последнего изменения файла
+# print(os.path.getatime(path))  # возвращает время последнего доступа к файлу
+# print(os.path.getctime(path))  # возвращает время создания файла
+#
+#
+# a_time = os.path.getatime(path)
+# print(time.strftime("%d.%m.%Y, %H:%M:%S", time.localtime(a_time)))
+#
+#
+# print(os.path.isdir(r'D:\Python215\215\venv\Scripts\python.exe'))  # Возвращает True, если путь является директорией
+# print(os.path.isfile(r'D:\Python215\215\venv\Scripts\python.exe'))  # Возвращает True, если путь является файлом
+
+# path = r"nested1\nested2\nested3\text1.txt"
+#
+# if os.path.exists(path):
+#     d, name = os.path.split(path)
+#     print(f"{name} ({d}), -last access time", os.path.getatime(path))
+# else:
+#     print("File is not exist")
+
+
+# class Point:
+#     """Класс для предоставления координат точки на плоскости"""
+#     x = 1
+#     y = 1
+#
+#
+# p1 = Point()
+# # print(type(p1))
+# # print(p1.x)
+# # print(Point.__doc__)
+# print(dir(Point))
+
+
+# class Point:
+#     x = 1
+#     y = 2
+#
+#
+# p1 = Point()
+# Point.x = 100
+# p1.x = 30
+# p1.y = 60
+# p1.z = 80
+# print(p1.x)
+# print(p1.y)
+# print(p1.__dict__)
+# print(Point.__dict__)
+
+
+# p2 = Point()
+# print(p2.x)
+# print(p2.y)
+# print(p2.__dict__)
+
+# print(id(Point))
+# print(id(p1))
+# print(id(p2))
+
+
+# class Point:
+#     x = 1
+#     y = 2
+#
+#     def set_coord(self, x, y):
+#         self.x = x
+#         self.y = y
+#         print(self.__dict__)
+#
+#
+# p1 = Point()
+# # p1.x = 5
+# # p1.y = 10
+# p1.set_coord(5, 10)
+# Point.set_coord(p1, 5, 10)
+#
+#
+# p2 = Point()
+# # p2.x = 20
+# # p2.y = 40
+# p2.set_coord(20, 40)
+# # Point.set_coord(p2)
+
+
+# class Human:
+#     name = "name"
+#     birthday = "00.00.0000"
+#     phone = "00-00-00"
+#     country = "country"
+#     city = "city"
+#     address = "street, house"
+#
+#     def print_info(self):
+#         print(" Персональные данные ".center(40, "*"))
+#         print(f"Имя: {self.name}\nДата рождения: {self.birthday}\nНомер телефона: {self.phone}\n"
+#               f"Страна: {self.country}\nГород: {self.city}\nДомашний адрес: {self.address}")
+#         print("=" * 40)
+#
+#     def input_info(self, first_name, birthday, phone, country, city, address):
+#         self.address = address
+#         self.birthday = birthday
+#         self.city = city
+#         self.phone = phone
+#         self.country = country
+#         self.name = first_name
+#
+#     def set_city(self, city):  # установить
+#         self.city = city
+#
+#     def get_city(self):  # получить
+#         return self.city
+#
+#     def set_birthday(self, birthday):
+#         self.birthday = birthday
+#
+#     def get_birthday(self):
+#         return self.birthday
+#
+#     def set_phone(self, phone):
+#         self.phone = phone
+#
+#     def get_phone(self):
+#         return self.phone
+#
+#     def set_country(self, country):
+#         self.country = country
+#
+#     def get_country(self):
+#         return self.country
+#
+#     def get_name(self):
+#         return self.name
+#
+#     def set_name(self, name):
+#         self.name = name
+#
+#     def set_address(self, address):
+#         self.address = address
+#
+#     def get_address(self):
+#         return self.address
+#
+#
+# h1 = Human()
+# h1.print_info()
+# h1.input_info("Юля", "23.05.1986", "45-46-98", "Россия", "Москва", "Чистопрудный бульвар, 1А")
+# h1.print_info()
+# h1.set_city("Саратов")
+# print(h1.get_city())
+# h1.set_name('Вася')
+# print(h1.get_name())
+# h1.set_birthday("09.11.2013")
+# print(h1.get_birthday())
+# h1.set_phone("78-45-92")
+# print(h1.get_phone())
+# h1.set_country("Беларусь")
+# print(h1.get_country())
+# h1.set_address("Ленина")
+# print(h1.get_address())
+# h1.print_info()
+
+
+# class Person:
+#     skill = 10  # статическое свойство
+#
+#     def __init__(self, name, surname):
+#         self.name = name  # динамическое свойство
+#         self.surname = surname  # динамическое свойство
+#
+#     def print_info(self):
+#         print("Данные сотрудника:", self.name, self.surname)
+#
+#     def add_skill(self, k):
+#         self.skill += k
+#         print("Квалификация сотрудника:", self.skill, "\n")
+#
+#
+# p1 = Person("Viktor", "Reznik")
+# p1.print_info()
+# p1.add_skill(3)
+#
+# p2 = Person("Anna", "Dolgih")
+# p2.print_info()
+# p2.add_skill(2)
+
+
+# class Point:
+#     def __init__(self, x, y):
+#         self.x = x
+#         self.y = y
+#
+#     def __del__(self):
+#         print("Удаление экземпляра")
+#
+#
+# p1 = Point(5, 10)
+# print(p1.__dict__)
+# # del p1
+# # p1 = 0
+# print(p1.x)
+
+
+# class Point:
+#     def __init__(self, x, y):
+#         self.x = x
+#         self.y = y
+#
+#     def set_coord(self, x, y):
+#         if isinstance(x, int) and isinstance(y, int):
+#             self.x = x
+#             self.y = y
+#         else:
+#             print("Координаты должны быть числами")
+#
+#     def get_coord(self):
+#         return self.x, self.y
+#
+#
+# p1 = Point(5, 10)
+# print(p1.get_coord())
+# p1.set_coord(20, 30)
+# print(p1.get_coord())
+
+
+# class Point:
+#     count = 0  # 3
+#
+#     def __init__(self, x=1, y=1):
+#         self.x = x
+#         self.y = y
+#         Point.count += 1
+#
+#
+# p1 = Point()
+# p2 = Point()
+# p3 = Point()
+# print("Point", Point.count)
+# print("p1", p1.count)
+# print("p2", p2.count)
+# print("p3", p3.count)
+
+
+# class Robot:
+#     k = 0
+#
+#     def __init__(self, name):
+#         self.name = name
+#         print("Инициализация робота", self.name)
+#         Robot.k += 1
+#
+#     def __del__(self):
+#         print(self.name, "выключается!")
+#         Robot.k -= 1
+#         if Robot.k == 0:
+#             print(self.name, "был последним.")
+#         else:
+#             print("Работающих роботов осталось:", Robot.k)
+#
+#     def say_hi(self):
+#         print("Приветствую! Меня зовут:", self.name)
+#
+#
+# droid1 = Robot('R2-D2')
+# droid1.say_hi()
+# print("Численность роботов:", Robot.k)
+# print()
+# droid2 = Robot("C-3PO")
+# droid2.say_hi()
+# print("Численность роботов:", Robot.k)
+# print()
+# droid3 = Robot('RT-H2')
+# droid3.say_hi()
+# print("Численность роботов:", Robot.k)
+#
+# print("\nЗдесь роботы могут проделать какую-то работу.\n")
+# print("Роботы закончили свою работу. Давайте их выключим.\n")
+#
+# del droid1
+# del droid2
+# del droid3
+#
+# print("Численность роботов:", Robot.k)
+
+
+# class Point:
+#     def __init__(self, x, y):
+#         self.__x = self.__y = 0
+#         if Point.__check_value(x) and Point.__check_value(y):
+#             self.__x = x
+#             self.__y = y
+#
+#     def __check_value(z):
+#         if isinstance(z, int) or isinstance(z, float):
+#             return True
+#         return False
+#
+#     def set_coord(self, x, y):
+#         if Point.__check_value(x) and Point.__check_value(y):
+#             self.__x = x
+#             self.__y = y
+#         else:
+#             print("Координаты должны быть числами")
+#
+#     def get_coord(self):
+#         return self.__x, self.__y
+#
+#     def set_x(self, x):
+#         if Point.__check_value(x):
+#             self.__x = x
+#         else:
+#             print("Координата X должна быть числом")
+#
+#     def get_x(self):
+#         return self.__x
+#
+#     def set_y(self, y):
+#         if Point.__check_value(y):
+#             self.__y = y
+#         else:
+#             print("Координата Y должна быть числом")
+#
+#     def get_y(self):
+#         return self.__y
+#
+#
+# p1 = Point(5, 10.2)
+# print(p1.__dict__)
+# print(p1._Point__x)
+# p1._Point__x = "aaaa"
+# print(p1.__dict__)
+# print(p1.get_coord())
+# p1.set_coord(80.2, 120)
+# print(p1.get_coord())
+# p1.set_x(4)
+# print(p1.get_x())
+# p1.set_y(24)
+# print(p1.get_y())
+# print(p1.get_coord())
 
 
 
