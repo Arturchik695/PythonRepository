@@ -3498,6 +3498,342 @@ import os
 # print(p1.get_coord())
 
 
+# class Point:
+#     def __init__(self, x, y):
+#         self.__x = self.__y = 0
+#         if Point.__check_value(x) and Point.__check_value(y):
+#             self.__x = x
+#             self.__y = y
+#
+#     def __check_value(z):
+#         if isinstance(z, int) or isinstance(z, float):
+#             return True
+#         return False
+#
+#     def set_coord(self, x, y):
+#         if Point.__check_value(x) and Point.__check_value(y):
+#             self.__x = x
+#             self.__y = y
+#         else:
+#             print("Координаты должны быть числами")
+#
+#     def get_coord(self):
+#         return self.__x, self.__y
+#
+#     def set_x(self, x):
+#         if Point.__check_value(x):
+#             self.__x = x
+#         else:
+#             print("Координата X должна быть числом")
+#
+#     def get_x(self):
+#         return self.__x
+#
+#     def set_y(self, y):
+#         if Point.__check_value(y):
+#             self.__y = y
+#         else:
+#             print("Координата Y должна быть числом")
+#
+#     def get_y(self):
+#         return self.__y
+#
+#
+# p1 = Point(5, 10.2)
+# print(p1.__dict__)
+# print(p1._Point__x)
+# p1._Point__x = "aaaa"
+# print(p1.__dict__)
+# print(p1.get_coord())
+# p1.set_coord(80.2, 120)
+# print(p1.get_coord())
+# p1.set_x(4)
+# print(p1.get_x())
+# p1.set_y(24)
+# print(p1.get_y())
+# print(p1.get_coord())
+# import geometry
+#
+#
+# class Rectangle:
+#     def __init__(self, length=1, width=1):
+#         self.__length = length
+#         self.__width = width
+#
+#     def __check_value(z):
+#         if isinstance(z, int) or isinstance(z, float):
+#             return True
+#         return False
+#
+#     def set_width(self, w):
+#         if Rectangle.__check_value(w):
+#             self.__width = w
+#
+#     def set_length(self, lg):
+#         if Rectangle.__check_value(lg):
+#             self.__length = lg
+#
+#     def get_width(self):
+#         return self.__width
+#
+#     def get_length(self):
+#         return self.__length
+#
+#     def get_area(self):
+#         return self.__width * self.__length
+#
+#     def get_perimetr(self):
+#         return 2 * (self.__width + self.__length)
+#
+#     def get_hypotenuse(self):
+#         return round(geometry.sqrt(self.__length ** 2 + self.__width ** 2), 2)
+#
+#     def get_draw(self):
+#         print(('*' * self.__width + "\n") * self.__length)
+#
+#
+# a = Rectangle()
+# a.set_length(3)
+# a.set_width(9)
+# print("Длина прямоугольника:", a.get_length())
+# print("Ширина прямоугольника:", a.get_width())
+# print("Площадь прямоугольника:", a.get_area())
+# print("Периметр прямоугольника:", a.get_perimetr())
+# print("Гипотенуза прямоугольника:", a.get_hypotenuse())
+# a.get_draw()
 
+
+# class Point:
+#     __slots__ = ["__x", "__y", "z"]
+#
+#     def __init__(self, x, y):
+#         self.__x = x
+#         self.__y = y
+#
+#
+# p1 = Point(5, 10)
+# p1.z = 1
+# print(p1.z)
+# print(p1.__dict__)
+
+
+# class Point:
+#
+#     def __init__(self, x, y):
+#         self.__x = x
+#         self.__y = y
+#
+#     def __check_value(z):
+#         if isinstance(z, int) or isinstance(z, float):
+#             return True
+#         return False
+#
+#     def __set_x(self, x):
+#         if Point.__check_value(x):
+#             print("__set_x")
+#             self.__x = x
+#         else:
+#             raise ValueError("Неверный формат данных")
+#
+#     def __get_x(self):
+#         print("__get_x")
+#         return self.__x
+#
+#     def __del_x(self):
+#         print("Удаление свойства")
+#         del self.__x
+#
+#     x = property(__get_x, __set_x, __del_x)
+#
+#
+# p1 = Point(5, 10)
+# # p1.__set_x(45)
+# p1.x = 45
+# print(p1.x)
+# del p1.x
+# print(p1.__dict__)
+
+
+# class Point:
+#     def __init__(self, x, y):
+#         self.__x = x
+#         self.__y = y
+#
+#     @staticmethod
+#     def __check_value(z):
+#         if isinstance(z, int) or isinstance(z, float):
+#             return True
+#         return False
+#
+#     @property
+#     def x(self):
+#         print("__get_x")
+#         return self.__x
+#
+#     @x.setter
+#     def x(self, x):
+#         if Point.__check_value(x):
+#             print("__set_x")
+#             self.__x = x
+#         else:
+#             raise ValueError("Неверный формат данных")
+#
+#     @x.deleter
+#     def x(self):
+#         print("Удаление свойства")
+#         del self.__x
+#
+#     # x = property(__get_x, __set_x, __del_x)
+#
+#
+# p1 = Point(5, 10)
+# # p1.__set_x(45)
+# p1.x = 45
+# print(p1.x)
+# del p1.x
+# print(p1.__dict__)
+
+# class KgToPounds:
+#     def __init__(self, kg):
+#         self.__kg = kg
+#
+#     @property
+#     def kg(self):
+#         return self.__kg
+#
+#     @kg.setter
+#     def kg(self, new_kg):
+#         if isinstance(new_kg, (int, float)):
+#             self.__kg = new_kg
+#         else:
+#             raise TypeError("Килограммы задаются только числами")
+#
+#     def to_pound(self):
+#         return self.__kg * 2.205
+#
+#
+# weight = KgToPounds(12)
+# print(weight.kg, "кг =>", end=" ")
+# print(weight.to_pound(), "фунтов")
+# weight.kg = 41
+# print(weight.kg, "кг =>", end=" ")
+# print(weight.to_pound(), "фунтов")
+# weight.kg = '10.5'
+# print(weight.kg, "кг =>", end=" ")
+# print(weight.to_pound(), "фунтов")
+
+
+# class Person:
+#     def __init__(self, name, old):
+#         self.__name = name
+#         self.__old = old
+#
+#     @property
+#     def name(self):
+#         return self.__name
+#
+#     @name.setter
+#     def name(self, name):
+#         self.__name = name
+#
+#     @name.deleter
+#     def name(self):
+#         del self.__name
+#
+#     @property
+#     def old(self):
+#         return self.__old
+#
+#     @old.setter
+#     def old(self, old):
+#         self.__old = old
+#
+#     @old.deleter
+#     def old(self):
+#         del self.__old
+#
+#
+# p1 = Person('Irina', 26)
+# print(p1.__dict__)
+# p1.name = 'Ira'
+# print(p1.name)
+# p1.old = 22
+# print(p1.old)
+# del p1.old
+# print(p1.__dict__)
+
+
+# class Point:
+#     __count = 0  # 1 2 3
+#
+#     def __init__(self, x=0, y=0):
+#         self.__x = x
+#         self.__y = y
+#         Point.__count += 1
+#
+#     @staticmethod
+#     def get_count():
+#         return Point.__count
+#
+#     # get_count = staticmethod(get_count)
+#
+#
+# p1 = Point()
+# p2 = Point()
+# p3 = Point()
+# print(p1.get_count())
+# print(p2.get_count())
+# print(p3.get_count())
+# print(Point.get_count())
+
+
+# class Change:
+#     @staticmethod
+#     def inc(x):
+#         return x + 1
+#
+#     @staticmethod
+#     def dec(x):
+#         return x - 1
+#
+#
+# print(Change.inc(10), Change.dec(10))
+# import geometry
+#
+#
+# class Area:
+#     __count = 0
+#
+#     @staticmethod
+#     def triangle_area_1(a, b, c):
+#         Area.__count += 1
+#         p = (a + b + c) / 2
+#         return geometry.sqrt(p * (p - a) * (p - b) * (p - c))
+#
+#     @staticmethod
+#     def triangle_area_2(a, h):
+#         Area.__count += 1
+#         return 0.5 * a * h
+#
+#     @staticmethod
+#     def square_area(a):
+#         Area.__count += 1
+#         return a ** 2
+#
+#     @staticmethod
+#     def rect_area(a, b):
+#         Area.__count += 1
+#         return a * b
+#
+#     @staticmethod
+#     def get_count():
+#         return Area.__count
+#
+#
+# print(f"Площадь треугольника по формуле Герона (3,4,5): {Area.triangle_area_1(3, 4, 5)}")
+# print(f"Площадь треугольника через основание и высоту (6,7): {Area.triangle_area_2(6, 7)}")
+# print(f"Площадь квадрата (7): {Area.square_area(7)}")
+# print(f"Площадь прямоугольника (2,6): {Area.rect_area(2, 6)}")
+# print(f"Количество подсчетов площади: {Area.get_count()}")
 
 
