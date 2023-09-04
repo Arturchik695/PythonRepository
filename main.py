@@ -4479,4 +4479,617 @@ import os
 # print(t1.calc_area())
 
 
+# from abc import ABC, abstractmethod
+#
+#
+# class Currency(ABC):
+#     def __init__(self, value):
+#         self.value = value
+#
+#     @abstractmethod
+#     def convert_to_rub(self):
+#         pass
+#
+#     @abstractmethod
+#     def print_value(self):
+#         print(self.value, end=" ")
+#
+#
+# class Dollar(Currency):
+#     rate_to_rub = 74.16
+#     suffix = "USD"
+#
+#     def convert_to_rub(self):
+#         return self.value * Dollar.rate_to_rub
+#
+#     def print_value(self):
+#         super().print_value()
+#         print(Dollar.suffix, end=" ")
+#
+#
+# class Euro(Currency):
+#     rate_to_rub = 90.14
+#     suffix = "EUR"
+#
+#     def convert_to_rub(self):
+#         return self.value * Euro.rate_to_rub
+#
+#     def print_value(self):
+#         super().print_value()
+#         print(Euro.suffix, end=" ")
+#
+#
+# elem = [Dollar(5), Dollar(10), Dollar(50), Dollar(100)]
+#
+# for d in elem:
+#     d.print_value()
+#     print(f"= {d.convert_to_rub():.2f} RUB")
+#
+#
+# print()
+# elem2 = [Euro(5), Euro(10), Euro(50), Euro(100)]
+# for s in elem2:
+#     s.print_value()
+#     print(f" = {s.convert_to_rub():.2f} RUB")
+
+
+# from abc import ABC, abstractmethod
+#
+#
+# class Father(ABC):
+#     @abstractmethod
+#     def display1(self):
+#         pass
+#
+#     @abstractmethod
+#     def display2(self):
+#         pass
+#
+#
+# class Child(Father):
+#     def display1(self):
+#         print("Child")
+#
+#
+# class GrandChild(Child):
+#     def display2(self):
+#         print("GrandChild")
+#
+#
+# gc = GrandChild()
+# gc.display2()
+# gc.display1()
+
+
+# def func():
+#     x = 2
+#
+#     def inner():
+#         n = 4
+#         return n + x
+#
+#     return inner
+#
+#
+# a = func()
+# b = a()
+# print(b)
+
+
+# class MyOuter:
+#     age = 18
+#
+#     def __init__(self, name):
+#         self.name = name
+#
+#     @classmethod
+#     def outer_class_method(cls):
+#         print("outer_class_method")
+#
+#     def outer_obj_method(self):
+#         print('outer_obj_method')
+#
+#     class MyInner:
+#         def __init__(self, inner_name, obj):
+#             self.inner_name = inner_name
+#             self.obj = obj
+#
+#         def inner_method(self):
+#             print("inner_method", MyOuter.age, self.obj.name)
+#             MyOuter.outer_class_method()
+#             self.obj.outer_obj_method()
+#
+#
+# out = MyOuter('внешний')
+# print(out.name)
+# inner = out.MyInner('внутренний', out)
+# print(inner.inner_name)
+# inner.inner_method()
+
+
+# class Color:
+#     def __init__(self):
+#         self.name = "Green"
+#         self.lg = self.LightGreen()
+#
+#     def show(self):
+#         print("Name:", self.name)
+#
+#     class LightGreen:
+#         def __init__(self):
+#             self.name = "Light Green"
+#
+#         def display(self):
+#             print("Name:", self.name)
+#
+#
+# outer = Color()
+# outer.show()
+# g = outer.lg
+# g.display()
+
+# class Intern:
+#     def __init__(self):
+#         self.name = "Smith"
+#         self.imp = Employee().Head()
+#
+#     def display(self):
+#         print('Name:', self.name)
+#
+#
+# class Employee:
+#     def __init__(self):
+#         self.name = "Employee"
+#         # self.intern = Intern()
+#         # self.head = self.Head()
+#
+#     def show(self):
+#         print('Name:', self.name)  #, self.intern.name
+#
+#     class Head:
+#         def __init__(self):
+#             self.name = "Alba"
+#
+#         def display(self):
+#             print('Name:', self.name)
+#
+#
+# intern = Intern()
+# a = intern.imp
+# print(a.name)
+
+# outer = Employee()
+# outer.show()
+# d1 = outer.intern
+# d1.display()
+# d2 = outer.head
+# d2.display()
+
+
+# class Outer:
+#     def __init__(self):
+#         self.inner = self.Inner()
+#
+#     def show(self):
+#         print("Внешний класс")
+#
+#     class Inner:
+#         def __init__(self):
+#             self.inner_inner = self.InnerClass()
+#
+#         def show(self):
+#             print("Вложенный класс")
+#
+#         class InnerClass:
+#             def show(self):
+#                 print('Класс внутри вложенного класса')
+#
+#
+# outer = Outer()
+# outer.show()
+#
+# # inner1 = outer.inner
+# # inner1.show()
+#
+# # inner2 = inner1.inner_inner
+# inner2 = outer.inner.inner_inner
+# inner2.show()
+
+# class Computer:
+#     def __init__(self):
+#         self.name = "PC001"
+#         # self.os = self.OS()
+#         # self.cpu = self.CPU()
+#
+#     class OS:
+#         def system(self):
+#             return "Widows 10"
+#
+#     class CPU:
+#         def make(self):
+#             return "intel"
+#
+#         def model(self):
+#             return 'Core-i7'
+#
+#
+# # comp = Computer()
+# # my_os = comp.os
+# # my_cpu = comp.cpu
+# my_os = Computer.OS()
+# my_cpu = Computer.CPU()
+# # print(comp.name)
+# print(my_os.system())
+# print(my_cpu.make())
+# print(my_cpu.model())
+
+
+# class Base:
+#     # def __init__(self):
+#         # self.db = self.Inner()
+#
+#     def display(self):
+#         print("Базовый класс")
+#
+#     class Inner:
+#         def display1(self):
+#             print("Вложенный класс внутри базового")
+#
+#
+# class SubClass(Base):
+#     def __init__(self):
+#         print("Дочерний класс")
+#         super().__init__()
+#
+#     class Inner(Base.Inner):
+#         def display2(self):
+#             print('Вложенный класс внутри дочернего')
+#
+#
+# a = SubClass()
+# a.display()
+# # b = a.db
+# b = SubClass.Inner()
+# b.display1()
+# b.display2()
+
+
+# class Cat:
+#     def __init__(self, name):
+#         self.name = name
+#
+#     def __repr__(self):
+#         return f"{self.__class__}: {self.name}"
+#
+#     def __str__(self):
+#         return f"{self.name}"
+#
+#
+# cat = [Cat("Пушок"), Cat('Мурзик')]
+# print(cat)
+
+# class Point:
+#     def __init__(self, *args):
+#         print(args)
+#         self.__coord = args
+#         self.length = 0
+#
+#     def __len__(self):
+#         return len(self.__coord)
+#
+#
+# p = Point(5, 9, 4)
+# print(len(p))
+# import geometry
+#
+#
+# class Point:
+#     __slots__ = ('x', 'y', '__length')
+#
+#     def __init__(self, x, y):
+#         self.x = x
+#         self.y = y
+#         self.length = geometry.sqrt(x * x + y * y)
+#
+#     @property
+#     def length(self):
+#         return self.__length
+#
+#     @length.setter
+#     def length(self, value):
+#         self.__length = value
+#
+#
+# p1 = Point(5, 10)
+# print(p1.length)
+# p1.length = 10
+# print(p1.length)
+# print(p1.__dict__)
+
+
+# class Point:
+#     __slots__ = ('x', 'y')
+#
+#     def __init__(self, x, y):
+#         self.x = x
+#         self.y = y
+#
+#
+# class Point2D:
+#     def __init__(self, x, y):
+#         self.x = x
+#         self.y = y
+#
+#
+# p1 = Point(5, 10)
+# p2 = Point2D(5, 10)
+# print('p1 =', p1.__sizeof__())
+# print('p2 =', p2.__sizeof__() + p2.__dict__.__sizeof__())
+
+
+# class Point:
+#     __slots__ = ('x', 'y')
+#
+#     def __init__(self, x, y):
+#         self.x = x
+#         self.y = y
+#
+#
+# class Point3D(Point):
+#     __slots__ = 'z'
+#
+#     def __init__(self, x, y, z):
+#         self.z = z
+#         super().__init__(x, y)
+#
+#
+# p1 = Point(5, 10)
+# p3 = Point3D(5, 10, 20)
+# # p3.z = 20
+# print(p3.x, p3.y, p3.z)
+
+
+# class Creature:
+#     def __init__(self, name):
+#         self.name = name
+#
+#
+# class Animal(Creature):
+#     def sleep(self):
+#         print(self.name, "is sleeping")
+#
+#
+# class Pet(Creature):
+#     def play(self):
+#         print(self.name, "is playing")
+#
+#
+# class Dog(Animal, Pet):
+#     def bark(self):
+#         print(self.name, "is barking")
+#
+#
+# b = Dog("Buddy")
+# b.bark()
+# b.sleep()
+# b.play()
+
+# class A:
+#     def __init__(self):
+#         print("Класс A")
+#
+#
+# class AA:
+#     def __init__(self):
+#         print("Класс AA")
+#
+#
+# class B(A):
+#     def __init__(self):
+#         print("Класс B")
+#
+#
+# class C(AA):
+#     def __init__(self):
+#         print("Класс C")
+#
+#
+# class D(B, C):
+#     # def __init__(self):
+#     #     print("Класс D")
+#     pass
+#
+#
+# d = D()
+# print(D.mro())
+# print(D.__mro__)
+
+# class A:
+#     def __init__(self):
+#         print('Class A')
+#
+#     def hi(self):
+#         print("A")
+#
+#
+# class B(A):
+#     def __init__(self):
+#         print('Class B')
+#
+#     def hi(self):
+#         print("B")
+#
+#
+# class C(A):
+#     def __init__(self):
+#         print('Class C')
+#
+#     def hi(self):
+#         print("C")
+#
+#
+# class D(B, C):
+#     def __init__(self):
+#         print('Class D')
+#         B.__init__(self)
+#         C.__init__(self)
+#
+#     def hi(self):
+#         print("D")
+#         A.hi(self)
+#
+#
+# d = D()
+# d.hi()
+# print(D.mro())
+# print(D.__mro__)
+
+
+# class Point:
+#     def __init__(self, x, y):
+#         self.__x = x
+#         self.__y = y
+#
+#     def __str__(self):
+#         return f"({self.__x}, {self.__y})"
+#
+#
+# class Styles:
+#     def __init__(self, color="red", width=1):
+#         print("Инициализатор Styles")
+#         self._color = color
+#         self._width = width
+#
+#
+# class Pos:
+#     def __init__(self, sp: Point, ep: Point, *args):
+#         print("Инициализатор POS")
+#         self._sp = sp
+#         self._ep = ep
+#         Styles.__init__(self, *args)
+#
+#
+# class Line(Pos, Styles):
+#     # def __init__(self, sp, ep, color="red", width=1):
+#     #     Pos.__init__(self, sp, ep)
+#     #     Styles.__init__(self, color, width)
+#
+#     def draw(self):
+#         print(f"Рисование линии: {self._sp}, {self._ep}, {self._color}, {self._width}")
+#
+#
+# l1 = Line(Point(10, 10), Point(100, 100), "green", 5)  #
+# l1.draw()
+
+
+# class Displayer:
+#     @staticmethod
+#     def display(message):
+#         print(message)
+#
+#
+# class LoggerMixin:
+#     def log(self, message, filename="logfile.txt"):
+#         with open(filename, 'a', encoding='utf-8') as fh:
+#             fh.write(message)
+#
+#     def display(self, message):
+#         Displayer.display(message)
+#         self.log(message)
+#
+#
+# class MySubClass(LoggerMixin, Displayer):
+#     def log(self, message, filename=''):
+#         super().log(message, filename='subclasslog.txt')
+#
+#
+# subclass = MySubClass()
+# subclass.display("Эта строка будет отображаться и записываться в файл")
+
+# class Goods:
+#     def __init__(self, name, weight, price):
+#         print("Init Goods")
+#         super().__init__()
+#         self.name = name
+#         self.weight = weight
+#         self.price = price
+#
+#     def price_info(self):
+#         print(f"{self.name}, {self.weight}, {self.price}")
+#
+#
+# class MixinLog:
+#     ID = 0
+#
+#     def __init__(self):
+#         print("Init MixinLog")
+#         MixinLog.ID += 1
+#         self.id = MixinLog.ID
+#
+#     def save_save_log(self):
+#         print(f"{self.id}: товар был продан в 00:00")
+#
+#
+# class NoteBook(Goods, MixinLog):
+#     pass
+#
+#
+# n = NoteBook('HP', 1.5, 35000)
+# n1 = NoteBook('HP', 1.5, 35000)
+# n.price_info()
+# n.save_save_log()
+# n1.save_save_log()
+# print(NoteBook.mro())
+
+
+# 24 * 60 * 60 = 86400 (число секунд в одном дне)
+
+# class Clock:
+#     __DAY = 86400
+#
+#     def __init__(self, sec):
+#         if not isinstance(sec, int):
+#             raise ValueError("Секунды должны быть целым числом")
+#         self.sec = sec
+#
+#     def get_format_time(self):
+#         s = self.sec % 60
+#         m = (self.sec // 60) % 60
+#         h = (self.sec // 3600) % 24
+#         return f"{self.get_form(h)}:{self.get_form(m)}:{self.get_form(s)}"
+#
+#     @staticmethod
+#     def get_form(x):
+#         return str(x) if x > 9 else "0" + str(x)
+#
+#     def __add__(self, other):
+#         if not isinstance(other, Clock):
+#             raise ArithmeticError("Правый операнд должен быть типом данных Clock")
+#         return Clock(self.sec + other.sec)  # Clock(300)
+#
+#     def __eq__(self, other):
+#         # if self.sec == other.sec:
+#         #     return True
+#         # return False
+#         return self.sec == other.sec
+#
+#
+# c1 = Clock(100)
+# c2 = Clock(100)
+# if c1 == c2:
+#     print("Время равно")
+# else:
+#     print("Время разное")
+
+# c4 = Clock(300)
+# c3 = c1 + c2 + c4
+# print(c1.get_format_time())
+# print(c2.get_format_time())
+# c2 += c1
+# print(c2.get_format_time())
+# print(type(c3))
+# print(c3.get_format_time())
+
+# print(5 == 2)
+
 
