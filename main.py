@@ -5420,3 +5420,373 @@ import os
 # ]
 # for i in group:
 #     i.info()
+
+
+# Функторы
+
+# def func():
+#     def wrap():
+#         return "Hello"
+#
+#     return wrap
+#
+#
+# a = func()
+# print(a())
+
+# class Counter:
+#     def __init__(self):
+#         self.count = 0
+#
+#     def __call__(self, *args, **kwargs):
+#         self.count += 1
+#         print(self.count)
+#
+#
+# c1 = Counter()
+# c1()
+# c1()
+# c1()
+# c1()
+# c2 = Counter()
+# c2()
+# c2()
+# c1()
+
+# class StripChars:
+#     def __init__(self, chars):
+#         self.chars = chars
+#
+#     def __call__(self, string):
+#         # print(string)  # ' !  ?Hello World; . :'
+#         if not isinstance(string, str):
+#             raise ValueError("Аргумент должен быть строкой")
+#
+#         return string.strip(self.chars)
+#
+#
+# s1 = StripChars("?;!.: ")
+# print(s1(" !  ?Hello World; . :"))
+#
+#
+# # print(s1(20))
+#
+# def strip_char(chars):
+#     def call(string):
+#         if not isinstance(string, str):
+#             raise ValueError("Аргумент должен быть строкой")
+#
+#         return string.strip(chars)
+#
+#     return call
+#
+#
+# s2 = strip_char("?;!.: ")
+# print(s2(" !  ?Hello World; . :"))
+
+
+# Декораторы
+
+# class MyDecorator:
+#     def __init__(self, func):
+#         self.func = func
+#
+#     def __call__(self):
+#         print('перед вызовом функции')
+#         self.func()
+#         print('после вызова функции')
+#
+#
+# @MyDecorator
+# def hello():
+#     print("Hello")
+#
+#
+# hello()
+
+
+# class MyDecorator:
+#     def __init__(self, func):
+#         self.func = func
+#
+#     def __call__(self, a, b):
+#         res = 'перед вызовом функции\n'
+#         res += str(self.func(a, b))
+#         res += '\nпосле вызова функции'
+#         return res
+#
+#
+# @MyDecorator
+# def hello(a, b):
+#     return a * b
+#
+#
+# print(hello(2, 5))
+
+
+# class Power:
+#     def __init__(self, func):
+#         self.func = func
+#
+#     def __call__(self, a, b):
+#         return self.func(a, b) ** 2
+#
+#
+# @Power
+# def result(a, b):
+#     return a * b
+#
+#
+# print(result(2, 3))
+
+
+# class MyDecorator:
+#     def __init__(self, func):
+#         self.func = func
+#
+#     def __call__(self, *args, **kwargs):
+#         res = 'перед вызовом функции\n'
+#         res += str(self.func(*args, **kwargs))
+#         res += '\nпосле вызова функции'
+#         return res
+#
+#
+# @MyDecorator
+# def hello(a, b):
+#     return a * b
+#
+#
+# @MyDecorator
+# def hello1(a, b, c):
+#     return a * b * c
+#
+#
+# print(hello(2, 5))
+# print(hello1(2, 5, 2))
+# print(hello1(a=2, c=5, b=2))
+
+
+# class MyDecorator:
+#     def __init__(self, arg):
+#         self.arg = arg
+#
+#     def __call__(self, func):
+#         def wrap(*args, **kwargs):
+#             res = 'перед вызовом функции\n'
+#             res += self.arg + str(func(*args, **kwargs))
+#             res += '\nпосле вызова функции'
+#             return res
+#
+#         return wrap
+#
+#
+# @MyDecorator("Результат умножения: ")
+# def hello(a, b):
+#     return a * b
+#
+#
+# print(hello(2, 5))
+
+
+# class Power:
+#     def __init__(self, arg):
+#         self.arg = arg
+#
+#     def __call__(self, func):
+#         def wrap(*args, **kwargs):
+#             return func(*args, **kwargs) ** self.arg
+#
+#         return wrap
+#
+#
+# @Power(3)
+# def result(a, b):
+#     return a * b
+#
+#
+# print(result(2, 2))
+
+
+# def dec(fn):
+#     def wrap(*args, **kwargs):
+#         print("*" * 20)
+#         fn(*args, **kwargs)
+#         print("*" * 20)
+#
+#     return wrap
+#
+#
+# class Person:
+#     def __init__(self, name, surname):
+#         self.name = name
+#         self.surname = surname
+#
+#     @dec
+#     def info(self):
+#         print(f"{self.name} {self.surname}")
+#
+#
+# p1 = Person('Виталий', 'Карасев')
+# p1.info()
+
+# def decorator(cls):
+#     class Wrapper(cls):
+#         def method_2(self, value):
+#             # print("cls =", cls)
+#             return value * 2
+#
+#     return Wrapper
+#
+#
+# @decorator
+# class ActualClass:
+#     def __init__(self):
+#         print("Инициализатор ActualClass")
+#
+#     def method_1(self, value):
+#         return value * 4
+#
+#
+# obj = ActualClass()
+# print(obj.method_1(4))
+# print(obj.method_2(4))
+
+
+# Дескрипторы
+#
+# class String:
+#     def __init__(self, value=None):
+#         if value:
+#             self.set(value)
+#
+#     def set(self, value):
+#         if not isinstance(value, str):
+#             raise ValueError(f"{value} должно быть строкой")
+#         self.__value = value
+#
+#     def get(self):
+#         return self.__value
+#
+#
+# class Person:
+#     def __init__(self, name, surname):
+#         self.name = String(name)
+#         self.surname = String(surname)
+#
+#     # @property
+#     # def name(self):
+#     #     return self.__name
+#     #
+#     # @name.setter
+#     # def name(self, value):
+#     #     self.__name = value
+#     #
+#     # @property
+#     # def surname(self):
+#     #     return self.__surname
+#     #
+#     # @surname.setter
+#     # def surname(self, value):
+#     #     self.__surname = value
+#
+#
+# p = Person("Иван", "Петров")
+# p.name.set("Виктор")
+# print(p.name.get())
+
+# class ValidSting:
+#     def __set_name__(self, owner, name):
+#         self.__name = name
+#
+#     def __get__(self, instance, owner):
+#         return instance.__dict__[self.__name]
+#
+#     def __set__(self, instance, value):
+#         if not isinstance(value, str):
+#             raise ValueError(f"{self.__name} должно быть строкой")
+#         instance.__dict__[self.__name] = value
+#
+#
+# class Person:
+#     first = ValidSting()
+#     surname = ValidSting()
+#
+#     def __init__(self, name, surname):
+#         self.first = name
+#         self.surname = surname
+#
+#
+# p = Person("Иван", "Петров")
+# p.first = "Владимир"
+# print(p.first)
+# print(p.surname)
+# print(p.__dict__)
+
+# class NonNegative:
+#     def __set_name__(self, owner, name):
+#         self.name = name
+#
+#     def __get__(self, instance, owner):
+#         return instance.__dict__[self.name]
+#
+#     def __set__(self, instance, value):
+#         if value < 0:
+#             raise ValueError('Значение должно быть положительным')
+#         instance.__dict__[self.name] = value
+#
+#
+# class Order:
+#     price = NonNegative()
+#     quantity = NonNegative()
+#
+#     def __init__(self, name, price, quantity):
+#         self.name = name
+#         self.price = price
+#         self.quantity = quantity
+#
+#     def total(self):
+#         return self.price * self.quantity
+#
+#
+# apple = Order('apple', 5, 10)
+# print(apple.total())
+
+# class Integer:
+#     @staticmethod
+#     def verify_coord(coord):
+#         if not isinstance(coord, int):
+#             raise TypeError(f"Координата {coord} должна быть целым числом")
+#
+#     def __set_name__(self, owner, name):
+#         self.name = "_" + name
+#
+#     def __get__(self, instance, owner):
+#         # return instance.__dict__[self.name]
+#         return getattr(instance, self.name)
+#
+#     def __set__(self, instance, value):
+#         self.verify_coord(value)
+#         # instance.__dict__[self.name] = value
+#         setattr(instance, self.name, value)
+#
+#
+# class Point3D:
+#     x = Integer()
+#     y = Integer()
+#     z = Integer()
+#
+#     def __init__(self, x, y, z):
+#         self.x = x
+#         self.y = y
+#         self.z = z
+#
+#
+# p1 = Point3D(1, 2, 3)
+# p1.z = 15
+# print(p1.z)
+# print(p1.__dict__)
+
+
+
+
+
